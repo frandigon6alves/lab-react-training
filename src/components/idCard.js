@@ -1,40 +1,22 @@
-function IdCard() {
-    const birthDate = new Date('1992-07-14');
+import React from 'react';
 
-// Obter o nome do dia da semana
-const daysOfWeek = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado'];
-const dayOfWeek = daysOfWeek[birthDate.getDay()];
-
-// Obter o nome do mês
-const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-const month = months[birthDate.getMonth()];
-
-// Formatar a data no formato desejado
-const formattedDate = `${dayOfWeek} - ${month} - ${birthDate.getDate()} - ${birthDate.getFullYear()}`;
+const IdCard = ({ firstName, lastName, gender, picture, height, birth }) => {
+  const fullDate = birth.toDateString();
 
   return (
-    <div style={{width: '1000px'}}>
-    <div style={{display: 'flex', border: '2px solid black', padding: '5px', margin:'5px', marginBottom: '2px'}}>
-        <img src="https://randomuser.me/api/portraits/men/44.jpg" width="200" height="200" />
+    <div style={{border: '2px solid black', padding: '5px', margin: '5px'}}>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <img src={picture} alt={'profile picture of ' + firstName} style={{height: '160px', marginRight: '10px'}} />
         <div>
-        <p><strong>Nombre:</strong> João</p>
-        <p><strong>Apellido:</strong> Juanito</p>
-        <p><strong>Gender:</strong> Male</p>
-        <p><strong>Height:</strong> 175m</p>
-        <p><strong>Birth:</strong> {formattedDate}</p>
+          <p><strong>Nombre:</strong> {firstName}</p>
+          <p><strong>Apellido:</strong> {lastName}</p>
+          <p><strong>Género:</strong> {gender}</p>
+          <p><strong>Fecha de nacimiento:</strong> {fullDate}</p>
+          <p><strong>Altura:</strong> {height / 100 + 'm'}</p>
         </div>
-    </div>
-    <div style={{display: 'flex', border: '2px solid black', padding: '5px', margin:'5px', marginBottom: '2px'}}>
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" width="200" height="200"/>
-        <div>
-        <p><strong>Nombre:</strong> Maria</p>
-        <p><strong>Apellido:</strong> Julia</p>
-        <p><strong>Gender:</strong> Female</p>
-        <p><strong>Height:</strong> 165m</p>
-        <p><strong>Birth:</strong> {formattedDate}</p>
-        </div>
-    </div>
+      </div>
     </div>
   );
 }
+
 export default IdCard;
